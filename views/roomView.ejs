@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>오픈 채팅 방</title>
+    <!-- Lato Font CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/view.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <header class="header col-12">
+            <h1 class="brand">오픈 채팅 방</h1>
+            <form class="room_finder col-8 push-2 push-lg-4" action="/searchRoom" method="get">
+                <input type="text" name="roomName" class="roomName" value="">
+                <input type="submit" name="roomFindBtn" id="roomFindBtn" class="roomFindBtn" value="찾기">
+            </form>
+        </header>
+    </div>
+</div>
+
+
+<main class="main">
+    <ul class="container">
+        <% for(title in titles){%>
+        <div class="row roomRow">
+            <a class="btn btn-default roomBtn col-12" href="/titles/<%=titles[title].id%>" role="button">
+                <%= titles[title].title %>
+            </a>
+        </div>
+        <% } %>
+    </ul>
+    <div>
+        <a href="/new">new</a>
+    </div>
+</main>
+
+</body>

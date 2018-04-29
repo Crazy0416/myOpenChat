@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>chat</title>
+    <style>
+        .chat_log{ width: 95%; height: 200px;}
+        .name{width: 10%;}
+        .message{width: 70%;}
+        .chat{width: 10%;}
+    </style>
+</head>
+<body>
+<div>
+    <textarea id="chatLog" class="chat_log" readonly></textarea>
+</div>
+<form id="chat">
+    <input id="name" class="name" type="text" readonly>
+    <input id="message" class="message" type="text">
+    <input type="submit" class="chat" value="chat"/>
+</form>
+<div id="box" class="box">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = io();
+        var thisURL = window.location.pathname;
+        var roomKey = thisURL.split('/');
+
+        $('#chat').on('submit', function(e){
+            socket.emit('send message', $('#name').val(), $('#message').val(), roomKey[2]);
+            $('#message').val("");      // 문자를 보낸 뒤 ""로 만듬
+            e.preventDefault();
+        });
+        socket.emit('joinRoom', roomKey[2]);     // 룸의 id 값 전송하는 이벤트
+
+        socket.on('receive message', function(msg){   // 내가 보낸 문자열이 아닌경우
+            if((msg.split(' :'))[0] != $('#name').val()){
+                $('#chatLog').append(msg+"\n");
+            }
+            else {                                      // 내가 보낸 문자열일 경우
+                var msgsplit = msg.split(' :');
+                msgsplit[0] = msgsplit[0] + "(me)";
+                var msgme = msgsplit[0] + " : " + msgsplit[1];
+                $('#chatLog').append(msgme+"\n");
+            }
+            $('#chatLog').scrollTop($('#chatLog').innerHeight())
+        });
+        socket.on('change name', function(name){
+            $('#name').val(name);
+            socket.emit('send message', $('#name').val(), name + "님께서 입장하였습니다.", roomKey[2]);
+        })
+    </script>
+</body>
+</html>

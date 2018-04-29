@@ -1,0 +1,58 @@
+body {
+    font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+ul, ol{
+    list-style-type: none;
+    padding: 0;
+}
+/* header */
+.header{
+    height: 150px;
+    background-color: #725253;
+}
+
+.header h1{
+    color: white;
+    font-family: 'KoPub바탕체', serif;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+.room_finder{
+    width: 500px;
+    margin-left: 0 auto;
+}
+.roomName{
+    background-color: #644849;
+    border: 0px;
+    border-radius: 100px;
+    width: 80%;
+    text-align: center;
+}
+.roomName:focus{
+    outline: none;
+}
+.roomFindBtn{
+    border-radius: 100px;
+    background-color: #725253!important;
+    color: white;
+    font-family: 'KoPub바탕체', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.roomBtn{
+    color: black;
+    height: 80px;
+    border: 1px solid;
+    border-color: #ACAAA8;
+    background-color: #F0F0F0;
+    text-align: left;
+}
+.roomBtn:hover{
+    color: inherit;
+    text-decoration: none;
+}
