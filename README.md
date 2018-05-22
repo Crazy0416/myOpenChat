@@ -29,6 +29,38 @@ node bin/www
 
 
 
+## 화면
+
+### 메인 화면 
+
+![메인 화면](https://raw.githubusercontent.com/Crazy0416/myOpenChat/master/resource/1.png)
+
+
+
+### 채팅방 생성
+
+![채팅방 생성](https://raw.githubusercontent.com/Crazy0416/myOpenChat/master/resource/2.png)
+
+
+
+### 채팅방 화면
+
+![채팅방 화면](https://raw.githubusercontent.com/Crazy0416/myOpenChat/master/resource/3.png)
+
+
+
+### 채팅방이 생성되어 있을 때 메인화면
+
+![채팅방 생성시 메인화면](https://raw.githubusercontent.com/Crazy0416/myOpenChat/master/resource/4.png)
+
+
+
+### 채팅
+
+![채팅](https://raw.githubusercontent.com/Crazy0416/myOpenChat/master/resource/5.gif)
+
+
+
 ## socket.io 주의할 점
 
 **첫 번째.** bin/www
@@ -51,4 +83,3 @@ const ioHandler = require('../routes/socketIO')(io);
 **두 번째.**
 
 socket.io의 Room은 따로 설정해두지 않는 이상 컴퓨터의 메모리에 저장하기 때문에 scale out을 하는 경우 Room을 공유할 수 없다. => 따로 설정하기.
-
